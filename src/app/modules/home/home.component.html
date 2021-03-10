@@ -1,0 +1,19 @@
+<div class="titulo">
+  <h2>Lista cardss</h2>
+</div>
+<div class="lista row" style="display: flex; flex-direction: row;" *ngFor="let cards of creditcards">
+  <ng-container>
+    <p style="margin: 0px" >  |  id:   </p><span style="margin: 0px"> {{cards.id}}</span>
+    <p style="margin: 0px" >  |  name:   </p><span style="margin: 0px"> {{cards.name}}</span>
+    <p style="margin: 0px" >  |  money:   </p><span style="margin: 0px"> {{cards.money}}</span>
+    <br>
+  </ng-container>
+  <br>
+  <br>
+</div>
+<div class="col" style="display: flex; flex-direction: column; padding-right: 50vw;">
+  <label for="">ID</label><input type="text" [(ngModel)]="id">
+  <label for="">Name</label><input type="text" [(ngModel)]="name">
+  <label for="">Money</label><input type="text" [(ngModel)]="money">
+  <button (click)="crearRegistro()">Enviar</button>
+</div>
