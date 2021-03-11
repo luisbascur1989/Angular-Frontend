@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { CreditCard, NuevaCreditCard } from '../models/creditcard';
+import { CreditCard } from '../models/creditcard';
 
 @Injectable({
   providedIn: 'root'
@@ -14,14 +14,14 @@ export class CreditCardService {
 
   constructor(private http: HttpClient) { }
 
-  getCreditCards(): Observable<CreditCard> {
+  getCreditCards(): Observable<CreditCard[]> {
     const url = this.baseUrl;
-    return this.http.get<CreditCard>( url );
+    return this.http.get<CreditCard[]>( url );
   }
 
   getCreditCardByID(id: string): Observable<CreditCard> {
-    const url = `${this.baseUrl}/${id}`
-    return this.http.get( url );
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.get<CreditCard>( url );
   }
 
   postCreditCard( data: any ):Observable<any> {
@@ -32,5 +32,11 @@ export class CreditCardService {
   deleteProduct(id: string): Observable<any> {
     const url = `${this.baseUrl}/${id}`
     return this.http.delete(url);
+  }
+
+  // Crear servicio editarCreditCard
+  editCreditCard(id: string, body: any): Observable<any> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.patch(url,body)
   }
 }

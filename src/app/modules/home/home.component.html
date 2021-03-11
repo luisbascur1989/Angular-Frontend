@@ -7,20 +7,23 @@
   </div>
 </div>
 <div class="container"
-  *ngFor="let cards of creditcards">
+  *ngFor="let card of creditcards">
   <div class="row">
     <br>
     <div class="col-sm">
-      <p> id: {{cards.id}}</p>
+      <p> id: {{card.id}}</p>
     </div>
     <div class="col-sm">
-      <p> name {{cards.name}}</p>
+      <p> name {{card.name}}</p>
     </div>
     <div class="col-sm">
-      <p> money: {{cards.money}}</p>
+      <p> money: {{card.money}}</p>
     </div>
     <div class="col-sm">
-      <button class="btn btn-danger" (click)="deleteCreditCard(cards.id)">Borrar</button>
+      <button class="btn btn-danger" (click)="deleteCreditCard(card.id)">Borrar</button>
+    </div>
+    <div class="col-sm">
+      <button class="btn btn-primary" (click)="goEditCreditCard(card.id)">Editar</button>
     </div>
   </div>
   <br>

@@ -2,7 +2,6 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { CreditCard } from 'src/app/models/creditcard';
 import { CreditCardService } from '../../services/credit-card.service';
-import { NuevaCreditCard } from '../../models/creditcard';
 
 @Component({
   selector: 'app-create',
@@ -10,7 +9,6 @@ import { NuevaCreditCard } from '../../models/creditcard';
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent implements OnInit {
-  creditcards: CreditCard[] = []
   
   id: string;
   name: string;
@@ -22,7 +20,7 @@ export class CreateComponent implements OnInit {
   }
 
   postCreditCards() {
-    let newCreditCard: NuevaCreditCard = {
+    let newCreditCard: CreditCard = {
       name: this.name,
       money: this.money
     }
