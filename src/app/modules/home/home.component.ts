@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CreditCard } from 'src/app/models/creditcard';
+import { CreditCardService } from '../../services/credit-card.service';
 
 @Component({
   selector: 'app-home',
@@ -7,38 +8,27 @@ import { CreditCard } from 'src/app/models/creditcard';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  creditcards =
-    [{
-      id: "11",
-      name: "dsadasdas",
-      money: 0,
-    },
-    {
-      id: "123",
-      name: "dasdsda",
-      money: 111110,
-    },
-    {
-      id: "43444",
-      name: "sdasdasdassd",
-      money: 45000,
-    }]
+  creditcards: CreditCard[] = []
 
   id: string;
   name: string;
   money: number;
 
 
-  constructor() {}
+  constructor(private creditCardService: CreditCardService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getCreditCards();
+  }
 
-  crearRegistro() {
-    let newCreditCard = {
-      id: this.id,
-      name: this.name,
-      money: this.money
-    }
-    console.log('Se creo el registro: ', newCreditCard);
+  getCreditCards() {
+    this.creditCardService.getCreditCards().subscribe((resp: any) => {
+      this.creditcards = resp;
+      console.log(this.creditcards);
+    });
+  }
+
+  deleteCreditCard(id: string): void {
+    this.creditCardService.deleteProduct(id).subscribe(() => { this.getCreditCards() })
   }
 }

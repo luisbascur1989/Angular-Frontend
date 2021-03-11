@@ -1,19 +1,31 @@
 <div class="titulo">
-  <h2>Lista cardss</h2>
+  <h2>Lista cards</h2>
 </div>
-<div class="lista row" style="display: flex; flex-direction: row;" *ngFor="let cards of creditcards">
-  <ng-container>
-    <p style="margin: 0px" >  |  id:   </p><span style="margin: 0px"> {{cards.id}}</span>
-    <p style="margin: 0px" >  |  name:   </p><span style="margin: 0px"> {{cards.name}}</span>
-    <p style="margin: 0px" >  |  money:   </p><span style="margin: 0px"> {{cards.money}}</span>
+<div class="row ">
+  <div class="col">
+    <button class="btn btn-primary" [routerLink]="['/create']">Crear targeta de credito por id</button>
+  </div>
+</div>
+<div class="container"
+  *ngFor="let cards of creditcards">
+  <div class="row">
     <br>
-  </ng-container>
+    <div class="col-sm">
+      <p> id: {{cards.id}}</p>
+    </div>
+    <div class="col-sm">
+      <p> name {{cards.name}}</p>
+    </div>
+    <div class="col-sm">
+      <p> money: {{cards.money}}</p>
+    </div>
+    <div class="col-sm">
+      <button class="btn btn-danger" (click)="deleteCreditCard(cards.id)">Borrar</button>
+    </div>
+  </div>
   <br>
   <br>
 </div>
-<div class="col" style="display: flex; flex-direction: column; padding-right: 50vw;">
-  <label for="">ID</label><input type="text" [(ngModel)]="id">
-  <label for="">Name</label><input type="text" [(ngModel)]="name">
-  <label for="">Money</label><input type="text" [(ngModel)]="money">
-  <button (click)="crearRegistro()">Enviar</button>
-</div>
+<br>
+<br>
+<br>
